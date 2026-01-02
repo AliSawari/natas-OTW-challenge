@@ -124,6 +124,8 @@ Note: XOR key is the repeatable part
 
 `document.cookie = "data=HmYkBwozJw4WNyAAFyB1VUc9MhxHaHUNAic4Awo2dVVHZzEJAyIxCUc5"`
 
+[Python Script](./xor_decode.py)
+
 <details>
 <summary>Password</summary>
 
@@ -215,7 +217,7 @@ end resulting query :
 SELECT * from users where username="natas16" AND password LIKE BINARY "test%"
 ```
 
-of course this can take a long time so we will be automating that with a simple Python script ( sql_password_guesser.py )
+of course this can take a long time so we will be automating that with a simple [Python script](./sql_password_guesser.py)
 
 
 <details>
@@ -277,7 +279,7 @@ grep -i "$(grep ^abc /etc/natas_webpass/natas17)" dictionary.txt
 
 32 chars × 62 guesses = ~2000 HTTP requests.
 
-we definitely need python for that, script name is grep-guesser.py
+we definitely need python for that, script is [grep-guesser.py](./grep-guesser.py)
 
 <details>
 <summary>Password</summary>
@@ -332,10 +334,12 @@ adding a time checker:
     resp = session.post(URL, data={"username": payload}, timeout=10)
     dt = time.perf_counter() - t0
     print("dt=", dt)
-    if dt >= 0.5:
+    if dt >= 1:
         print("[^] Time Delay signal", dt, prefix)
         return True
 ```
+
+[Python Script](./sql_password_guesser-with-time.py)
 
 
 <details>
@@ -350,3 +354,20 @@ Recovered password (partial if interrupted): 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
 
 
 # natas 18
+
+by reading the [natas18.php](./natas18.php) you can see this is a simply cookie injection process.
+each time you log in you will get assigned a random PHPSESSID. the range is from 0-640. by default the user will be assigned normal access and admin variable in session  is set to 0 
+
+the backend code is checking for an alredy set Cookie if it isn't there it'll check the username and password in the Req body, if we supply the cookie ourselves we can bypass the user creation method and act as an already registered user. the session gets loaded in backend and the admin variable is being checked each time. if there isn't any, it'll automatically set it to 0 as well. but we dont want a new user and random PHPSESSID and we certainly need admin variable to be 1. 
+
+so if we keep traversing the PHPSESSID cookie with a loop, we eventually hit the admin PHPSESSID, which will unlock the next level. script is [session-inject.py](./session-inject.py)
+
+<details>
+<summary>Password</summary>
+
+```
+DEBUG: Session start ok<br>You are an admin. The credentials for the next level are:<br><pre>Username: natas19
+Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr
+```
+
+</details>
