@@ -411,3 +411,22 @@ so is the 5th! with this we have a much easier time predicting the correct combi
 
 
 so far the cases are, 1 digit, 3 digits and 5 digits between the starting '3' and the end sequence 2d61646d696e
+
+lets start by the obvious one, 5 digit pattern: 
+
+[Python Script](./session-inject-pattern.py)
+
+Looks like we got it, Easy Peasy!
+
+
+<details>
+<summary>Password</summary>
+
+```
+DEBUG: Session start ok<br>You are an admin. The credentials for the next level are:<br><pre>Username: natas20
+Password: p5mCvP7GS2K6Bmt3gqhM2Fc1A5T8MVyw</pre></div>
+```
+
+</details><br/>
+
+
