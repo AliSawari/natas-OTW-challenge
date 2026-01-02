@@ -1,4 +1,18 @@
-# Natas 2
+# NATAS 
+
+https://overthewire.org/wargames/natas/
+
+Natas is a basic Web security challenge that tests your Web knowledge. there's no SSH login, just simple HTTP data manipulation can solve all the levels. all you need is a browser, terminal curl and Python (i use Burp Suit sometimes)
+
+each level has the password to unlock the next level. some levels do include the source code for the backend. I tried to walkthrough each level with explanation and provide the must detail possible alongside with my own crafted python scripts to solve them. Passwords for each level are hidden by default in the README (Unless if you want to spoil all the fun for yourself)
+
+# Before you begin
+
+This Journal has been composed with the intention of Education only. I Highly Recommend you tackle all of those challenges yourself before reading through this file. only refer to this if you are stuck and need help. feel free to suggest edits.
+
+Happy Hacking 
+
+## Natas 2
 
 <details>
 <summary>Password</summary>
@@ -17,7 +31,7 @@ mallory:9urtcpzBmH
 <br/>
 
 
-# Natas 3
+## Natas 3
 
 <details>
 <summary>Password</summary>
@@ -30,7 +44,7 @@ natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ
 <br/>
 
 
-# natas 5
+## natas 5
 <details>
 <summary>Password</summary>
 
@@ -43,7 +57,7 @@ bmF0YXM2OjBSb0p3SGRTS1dGVFlSNVd1aUFld2F1U3VOYUJYbmVk
 </details>
 <br/>
 
-# natas 6
+## natas 6
 `$secret = FOEIUWGHFEEUHOFUOIU`
 
 <details>
@@ -56,7 +70,7 @@ Access granted. The password for natas7 is bmg8SvU1LizuWjx3y7xkNERkHxGre0GS
 </details>
 <br/>
 
-# natas 7
+## natas 7
 <details>
 <summary>Password</summary>
 
@@ -67,7 +81,7 @@ xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q
 </details>
 <br/>
 
-# natas 8
+## natas 8
 `$secret = oubWYf2kBq`
 
 <details>
@@ -81,7 +95,7 @@ Access granted. The password for natas9 is ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t
 <br/>
 
 
-# natas 9
+## natas 9
 easy passthru() argument hijacking 
 
 `fff /; cat /etc/natas_webpass/natas10; echo` 
@@ -97,7 +111,7 @@ t7I5VHvpa14sJTUGV0cbEsbYfFP2dmOu
 <br/>
 
 
-# natas 10
+## natas 10
 still easy passthru() argument hijacking 
 
 `^ /etc/natas_webpass/natas11 \\ echo`
@@ -113,7 +127,7 @@ still easy passthru() argument hijacking
 <br/>
 
 
-# natas 11
+## natas 11
 XOR enc is reversible.
 
 Key ^ sample_string = Scramble
@@ -137,7 +151,7 @@ The password for natas12 is yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB
 <br/>
 
 
-# natas 12
+## natas 12
 
 a very simple Local File inclusion, no check on file format when upload, allowing us to upload a malicious PHP code. 
 
@@ -162,7 +176,7 @@ trbs5pCjCrkuSknBBKHhaBxq6Wm1j3LC
 <br/>
 
 
-# natas 13 
+## natas 13 
 
 its checking the file signature or the magic byte by  `exif_imagetype()`
 
@@ -187,7 +201,7 @@ z3UYcr4v4uBpeX8f7EZbMHlzK4UR2XtQ
 <br/>
 
 
-# natas 14
+## natas 14
 
 a very simple SQL Injection 
 
@@ -208,7 +222,7 @@ Successful login! The password for natas15 is SdqIqBsFcz3yotlNYErZSZwblkm0lrvx
 <br/>
 
 
-# natas 15 
+## natas 15 
 
 a bit more advanced SQL Injection
 
@@ -239,7 +253,7 @@ Recovered password (partial if interrupted): hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
 <br/>
 
 
-# natas 16 
+## natas 16 
 
 this one is also a grep passthru function, but definitely not so easy,  the  difference is : 
 
@@ -300,7 +314,7 @@ we definitely need python for that, script is [grep-guesser.py](./grep-guesser.p
 <br/>
 
 
-# natas 17
+## natas 17
 
 OK lets be honest, at first no one knows what to do here
 
@@ -361,7 +375,7 @@ Recovered password (partial if interrupted): 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
 <br/>
 
 
-# natas 18
+## natas 18
 
 by reading the [natas18.php](./natas18.php) you can see this is a simply cookie injection process.
 each time you log in you will get assigned a random PHPSESSID. the range is from 0-640. by default the user will be assigned normal access and admin variable in session  is set to 0 
@@ -381,7 +395,7 @@ Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr
 </details><br/>
 
 
-# natas 19
+## natas 19
 
 seems like the same level as before but session IDs are no longer sequential. also not integers anymore. but after loging in many times you notice a pattern in the PHPSESSID cookie, it always ends with 2d61646d696e. 
 
@@ -407,7 +421,7 @@ not only that, if we take a closer look, the third digit is also always 3!
 {'PHPSESSID': '3   4      2d61646d696e'}
 ```
 
-so is the 5th! with this we have a much easier time predicting the correct combination, there are some random anamolies though, like the last one. which is only one number, and the previous, which doesnt have a 5th digit. maybe we can ignore those. or we should write cases for each digit length
+so is the 5th! with this we have a much easier time predicting the correct combination, there are some random anomalies though, like the last one. which is only one number, and the previous, which doesnt have a 5th digit. maybe we can ignore those. or we should write cases for each digit length
 
 
 so far the cases are, 1 digit, 3 digits and 5 digits between the starting '3' and the end sequence 2d61646d696e
