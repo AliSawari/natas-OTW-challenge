@@ -1,0 +1,11 @@
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-12-12 01:46 +0330
+Nmap scan report for natas2.natas.labs.overthewire.org (51.21.210.216)
+Host is up (0.15s latency).
+rDNS record for 51.21.210.216: ec2-51-21-210-216.eu-north-1.compute.amazonaws.com
+Not shown: 997 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+1723/tcp open  pptp
+
+Nmap done: 1 IP address (1 host up) scanned in 11.71 seconds
